@@ -15,6 +15,7 @@ import LiveGamePage from "./routes/play_friends_live/LivePage";
 import EngineTest from "./routes/EngineTest";
 import RoomPage from "./routes/room/RoomPage";
 import History from "./routes/History";
+import GameReplay from "./routes/GameReplay";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL);
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "history/",
         element: <History />,
+      },
+      {
+        path: "history/:code",
+        element: <GameReplay />,
       },
       {
         path: "room/:code",

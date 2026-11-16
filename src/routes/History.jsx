@@ -2,23 +2,8 @@ import { Link } from "react-router-dom";
 import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Navbar from "src/components/Navbar";
-
-function StatCard({ label, value }) {
-  return (
-    <div className="rounded-lg border border-[#ffffff40] bg-[#ffffff10] p-4 text-center">
-      <p className="pri-font text-3xl">{value}</p>
-      <p className="text-sm opacity-80">{label}</p>
-    </div>
-  );
-}
-
-function formatDate(ms) {
-  return new Date(ms).toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
+import StatCard from "src/components/StatCard";
+import formatDate from "src/utils/formatDate";
 
 export default function History() {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -96,6 +81,13 @@ export default function History() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  to={`/history/${g.code}`}
+                  aria-label={`Watch replay of room ${g.code}`}
+                  className="self-start text-sm underline hover:no-underline"
+                >
+                  Watch replay
+                </Link>
               </li>
             ))}
           </ul>
